@@ -16,7 +16,7 @@
          background: blue;
          }
          app-toolbar {
-         background-color: var(--paper-blue-500);
+         background-color: green;
          color: white;
          margin: 20px 0;
          }
@@ -29,17 +29,17 @@
             <div main-title>Please fill details </div>
          </app-toolbar>
       </app-header>
-      <paper-input  name="name" label="Enter Name"></paper-input>
-      <paper-input name="age" label="Enter Age"></paper-input>
-      <paper-input name="company" label="Enter Company Name"></paper-input>
+      <paper-input  name="name" label="Enter Name" value="{{myName}}"></paper-input>
+      <paper-input name="age" label="Enter Age" value="{{myAge}}"></paper-input>
+      <paper-input name="company" label="Enter Company Name" value="{{myCompany}}"></paper-input>
+	  <h4> Select Gender: </h4>
       <paper-radio-group>
-         Select Gender: 
          <paper-radio-button on-click="_selectGender" id="gender">Male</paper-radio-button>
          <paper-radio-button on-click="_selectGender" id="gender">Female</paper-radio-button>
       </paper-radio-group>
-      <p>A message will go here, telling you if you got it right.</p>
-      <paper-button on-click="_submitDetails" class="submit" id="submit">Submit!</paper-button>
-      <!--<paper-button raised on-tap="getQuote" class="primary">Get a New Quote</paper-button>!-->
+	  </br>
+	  </br>
+      <paper-button raised on-click="_submitDetails" class="submit" id="submit">Submit!</paper-button>
    </template>
    <script>
       /**
@@ -53,6 +53,18 @@
 			gender: {
 				type: String,
 				value: ""
+			},
+			myName: {
+				type: String,
+				value: ""
+			},
+			myAge: {
+				type: Number,
+				value: ""
+			},
+			myCompany:{
+				type: String,
+				value: ""
 			}
 		};
         }
@@ -60,18 +72,21 @@
       _selectGender(event){
       let clickedRadioButton = event.target;
       this.gender = clickedRadioButton.textContent;
-      alert(this.gender);
+      // alert(this.gender);
       }
       
       _submitDetails(event) {
       let clickedButton = event.target;
       let data = clickedButton.textContent;
-      //alert(this.$.name.value)
-       alert(this.gender);
-      
+	  let details = {
+		"name":this.myName,
+		"age":this.myAge,
+		"company": this.myCompany,
+		"gender" : this.gender
+		}
+		console.log(details);;
       }
-      }
-      
+      }      
       window.customElements.define(HomepageApp.is, HomepageApp);
    </script>
 </dom-module>
