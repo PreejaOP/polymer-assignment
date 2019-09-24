@@ -1,0 +1,19 @@
+{
+  "name": "homepage",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "paper-button": "PolymerElements/paper-button#^3.0.1",
+    "app-layout": "2.0.1",
+    "paper-styles": "^3.0.1",
+    "paper-radio-button": "2.0.0",
+    "paper-input": "2.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "paper-styles": "1 - 2"
+  }
+}
