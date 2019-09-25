@@ -4,6 +4,8 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
 <dom-module id="homepage-app">
   <template>
     <style>
@@ -43,6 +45,13 @@
     </br>
     </br>
     <paper-button raised on-click="_submitDetails" class="submit" id="submit">Submit!</paper-button>
+    <iron-ajax id="newAjax" auto 
+               url="properties.json" 
+               body= "{{requestVal}}"
+               method="post"
+               handle-as="json" 
+               last-response="{{responseVal}}" 
+               debounce-duration="300"></iron-ajax>
   </template>
   <script>
     /**
@@ -68,6 +77,14 @@
           myCompany: {
             type: String,
             value: ""
+          },
+          responseVal: {
+            type: Object,
+            value: ""
+          },
+          requestVal: {
+            type: Object,
+            value: ""
           }
         };
       }
@@ -87,7 +104,9 @@
           "company": this.myCompany,
           "gender": this.gender
         }
-        console.log(details);;
+        this.requestVal = details;
+        this.$.newAjax.generateRequest();
+        console.log(details);
       }
     }
     window.customElements.define(HomepageApp.is, HomepageApp);
