@@ -5,88 +5,91 @@
 <link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <dom-module id="homepage-app">
-   <template>
-      <style>
-         :host {
-         display: block;
-         font-family: Roboto, Noto, sans-serif;
-         }
-         paper-button {
-         color: white;
-         background: blue;
-         }
-         app-toolbar {
-         background-color: green;
-         color: white;
-         margin: 20px 0;
-         }
-         paper-input {
-         width: 25%;
-         }
-      </style>
-      <app-header>
-         <app-toolbar>
-            <div main-title>Please fill details </div>
-         </app-toolbar>
-      </app-header>
-      <paper-input  name="name" label="Enter Name" value="{{myName}}"></paper-input>
-      <paper-input name="age" label="Enter Age" value="{{myAge}}"></paper-input>
-      <paper-input name="company" label="Enter Company Name" value="{{myCompany}}"></paper-input>
-	  <h4> Select Gender: </h4>
-      <paper-radio-group>
-         <paper-radio-button on-click="_selectGender" id="gender">Male</paper-radio-button>
-         <paper-radio-button on-click="_selectGender" id="gender">Female</paper-radio-button>
-      </paper-radio-group>
-	  </br>
-	  </br>
-      <paper-button raised on-click="_submitDetails" class="submit" id="submit">Submit!</paper-button>
-   </template>
-   <script>
-      /**
-       * @customElement
-       * @polymer
-       */
-      class HomepageApp extends Polymer.Element {
-        static get is() { return 'homepage-app'; }
-        static get properties() {
-          return {
-			gender: {
-				type: String,
-				value: ""
-			},
-			myName: {
-				type: String,
-				value: ""
-			},
-			myAge: {
-				type: Number,
-				value: ""
-			},
-			myCompany:{
-				type: String,
-				value: ""
-			}
-		};
-        }
-      
-      _selectGender(event){
-      let clickedRadioButton = event.target;
-      this.gender = clickedRadioButton.textContent;
-      // alert(this.gender);
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-family: Roboto, Noto, sans-serif;
       }
-      
+
+      paper-button {
+        color: white;
+        background: blue;
+      }
+
+      app-toolbar {
+        background-color: green;
+        color: white;
+        margin: 20px 0;
+      }
+
+      paper-input {
+        width: 25%;
+      }
+    </style>
+    <app-header>
+      <app-toolbar>
+        <div main-title>Please fill details </div>
+      </app-toolbar>
+    </app-header>
+    <paper-input name="name" label="Enter Name" value="{{myName}}"></paper-input>
+    <paper-input name="age" label="Enter Age" value="{{myAge}}"></paper-input>
+    <paper-input name="company" label="Enter Company Name" value="{{myCompany}}"></paper-input>
+    <h4> Select Gender: </h4>
+    <paper-radio-group>
+      <paper-radio-button on-click="_selectGender" id="gender">Male</paper-radio-button>
+      <paper-radio-button on-click="_selectGender" id="gender">Female</paper-radio-button>
+    </paper-radio-group>
+    </br>
+    </br>
+    <paper-button raised on-click="_submitDetails" class="submit" id="submit">Submit!</paper-button>
+  </template>
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class HomepageApp extends Polymer.Element {
+      static get is() { return 'homepage-app'; }
+      static get properties() {
+        return {
+          gender: {
+            type: String,
+            value: ""
+          },
+          myName: {
+            type: String,
+            value: ""
+          },
+          myAge: {
+            type: Number,
+            value: ""
+          },
+          myCompany: {
+            type: String,
+            value: ""
+          }
+        };
+      }
+
+      _selectGender(event) {
+        let clickedRadioButton = event.target;
+        this.gender = clickedRadioButton.textContent;
+        // alert(this.gender);
+      }
+
       _submitDetails(event) {
-      let clickedButton = event.target;
-      let data = clickedButton.textContent;
-	  let details = {
-		"name":this.myName,
-		"age":this.myAge,
-		"company": this.myCompany,
-		"gender" : this.gender
-		}
-		console.log(details);;
+        let clickedButton = event.target;
+        let data = clickedButton.textContent;
+        let details = {
+          "name": this.myName,
+          "age": this.myAge,
+          "company": this.myCompany,
+          "gender": this.gender
+        }
+        console.log(details);;
       }
-      }      
-      window.customElements.define(HomepageApp.is, HomepageApp);
-   </script>
+    }
+    window.customElements.define(HomepageApp.is, HomepageApp);
+  </script>
 </dom-module>
