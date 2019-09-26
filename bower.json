@@ -8,7 +8,9 @@
     "paper-styles": "^3.0.1",
     "paper-radio-button": "2.0.0",
     "paper-input": "2.0.0",
-    "iron-ajax": "@polymer/iron-ajax#2.1.3"
+    "iron-ajax": "@polymer/iron-ajax#2.1.3",
+    "paper-radio-group": "@polymer/paper-radio-group#2.2.0",
+    "paper-checkbox": "@polymer/paper-checkbox#2.0.4"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
