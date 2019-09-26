@@ -65,18 +65,18 @@
         </br>
         </br>
         Type of vehicle
-        <paper-checkbox checked>Car</paper-checkbox>
-        <paper-checkbox class="styled">
+        <paper-checkbox on-change="_selectVehicleType" value="Car" checked>Car</paper-checkbox>
+        <paper-checkbox on-change="_selectVehicleType" value="Two-wheeler"class="styled">
           Two-wheeler
         </paper-checkbox>
         </br>
         </br>
         <paper-dropdown-menu label="No: of Children">
           <paper-listbox slot="dropdown-content" selected="1">
-            <paper-item>0</paper-item>
-            <paper-item>1</paper-item>
-            <paper-item>2</paper-item>
-            <paper-item>> 2</paper-item>
+            <paper-item value="0">0</paper-item>
+            <paper-item value="1">1</paper-item>
+            <paper-item value="2">2</paper-item>
+            <paper-item value="other"> 2</paper-item>
           </paper-listbox>
         </paper-dropdown-menu>
         </br>
@@ -119,6 +119,14 @@
           requestVal: {
             type: Object,
             value: ""
+          },
+          vehicleList:{
+            type: Array,
+            value: []
+          },
+          noOfChildren:{
+            type: String,
+            value:""
           }
         };
       }
@@ -134,16 +142,27 @@
       }
 
       /**
+       * A function to capture the selected vehicle
+       * param : event
+       */
+      _selectVehicleType(event){
+        console.log(event.target.checked);
+        if(event.target.checked){
+          this.vehicleList.push(event.target.value);
+          console.log(this.vehicleList);
+        }
+      }
+
+      /**
        * A function to submit details and make a ajax dummy call
        */
       _submitDetails() {
-        let clickedButton = event.target;
-        let data = clickedButton.textContent;
         let details = {
           "name": this.myName,
           "age": this.myAge,
           "company": this.myCompany,
-          "gender": this.gender
+          "gender": this.gender,
+          "vehicleList": this.vehicleList
         }
         this.requestVal = details;
         this.$.newAjax.generateRequest();
