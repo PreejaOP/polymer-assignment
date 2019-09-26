@@ -27,47 +27,64 @@
 
       app-toolbar {
         background-color: green;
+        text-align: center;
         color: white;
         margin: 20px 0;
       }
 
       paper-input {
-        width: 25%;
+        width: 100%;
       }
+
+      paper-checkbox {
+        /* width: 100%; */
+      }
+
+      .outer-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
     </style>
     <app-header>
       <app-toolbar>
         <div main-title>Please fill details </div>
       </app-toolbar>
     </app-header>
-    <paper-input name="name" label="Enter Name" value="{{myName}}"></paper-input>
-    <paper-input name="age" label="Enter Age" value="{{myAge}}"></paper-input>
-    <paper-input name="company" label="Enter Company Name" value="{{myCompany}}"></paper-input>
-    <h4> Select Gender: </h4>
-    <paper-radio-group>
-      <paper-radio-button on-click="_selectGender" id="gender">Male</paper-radio-button>
-      <paper-radio-button on-click="_selectGender" id="gender">Female</paper-radio-button>
-    </paper-radio-group>
-    </br>
-    </br>
-    Type of vehicle
-    <paper-checkbox checked>Car</paper-checkbox>
-    <paper-checkbox class="styled">
-      Two-wheeler
-    </paper-checkbox>
-  </br>
-  </br>
-  <paper-dropdown-menu label="No: of Children">
-    <paper-listbox slot="dropdown-content" selected="1">
-      <paper-item>0</paper-item>
-      <paper-item>1</paper-item>
-      <paper-item>2</paper-item>
-      <paper-item>> 2</paper-item>
-    </paper-listbox>
-  </paper-dropdown-menu>
-</br>
-</br>
-    <paper-button raised on-click="_submitDetails" class="submit" id="submit">Submit!</paper-button>
+    <div class="outer-container">
+      <div class="inner-div">
+      <paper-input name="name" label="Enter Name" value="{{myName}}"></paper-input>
+      <paper-input name="age" label="Enter Age" value="{{myAge}}"></paper-input>
+      <paper-input name="company" label="Enter Company Name" value="{{myCompany}}"></paper-input>
+      <h4> Select Gender: </h4>
+      <paper-radio-group>
+        <paper-radio-button on-click="_selectGender" id="gender">Male</paper-radio-button>
+        <paper-radio-button on-click="_selectGender" id="gender">Female</paper-radio-button>
+      </paper-radio-group>
+      </br>
+      </br>
+      Type of vehicle
+      <paper-checkbox checked>Car</paper-checkbox>
+      <paper-checkbox class="styled">
+        Two-wheeler
+      </paper-checkbox>
+      </br>
+      </br>
+      <paper-dropdown-menu label="No: of Children">
+        <paper-listbox slot="dropdown-content" selected="1">
+          <paper-item>0</paper-item>
+          <paper-item>1</paper-item>
+          <paper-item>2</paper-item>
+          <paper-item>> 2</paper-item>
+        </paper-listbox>
+      </paper-dropdown-menu>
+      </br>
+      </br>
+      <paper-button raised on-click="_submitDetails" class="submit" id="submit">Submit!</paper-button>
+    </div>
+    </div>
     <iron-ajax id="newAjax" url="sampleurl" body="{{requestVal}}" method="post" handle-as="json" last-response="{{responseVal}}"
       debounce-duration="300"></iron-ajax>
   </template>
